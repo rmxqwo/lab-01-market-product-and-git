@@ -1,54 +1,79 @@
 ## Product Choice
-Product name: Yandex Go
+Name: Yandex Go
 
-Link: https://go.yandex/
+Website: go.yandex
 
-Short description: Yandex Go is a comprehensive mobility platform offering ride-hailing, taxi, food delivery, and other urban transportation services, primarily operating in Russia and CIS countries.
+Description: Ride-hailing and food delivery service from Yandex.
 
 
 ## Main components
-Note
+https://../../../docs/diagrams/out/yandex-go/component-diagram/Component%2520Diagram.svg
 
-According to the C4 model, a component is a grouping of related functionality encapsulated behind a well-defined interface.
+Diagram code
 
-Important
+Selected components:
 
-Use paths relative to your file.
+API Gateway - Entry point for all client requests
 
-Replace space in the path with %20 (see URL encoding).
+Dispatch Service - Matches riders with drivers
 
-Embed the product's Component Diagram.svg.
+Pricing Service - Calculates ride prices
 
-Example: ![Telegram Component Diagram](../../../docs/diagrams/out/telegram/component-diagram/Component%20Diagram.svg)
+Maps & Routing Service - Provides navigation and routes
 
-Rendered image (click to open)
-Provide a link to the PlantUML code for that component diagram.
-
-Example: Telegram Component Diagram Code
-
-Select at least 5 components of the product from the component diagram.
-
-For each selected component, explain in 1-2 sentences what it does (as you think).
+Payment Service - Handles payments
 
 ## Data flow
-Embed the product's Sequence Diagram.svg.
-Provide a link to the PlantUML code for that sequence diagram.
-Choose a group of actions (a box in the diagram, group or Flow in the PlantUML code).
-Describe what happens in that group of steps.
-Mention which components talk to each other and what data they exchange.
+https://../../../docs/diagrams/out/yandex-go/sequence-diagram/Sequence%2520Diagram.svg
+
+Diagram code
+
+Group: "3. Booking & Async Dispatch"
+
+When user books a ride:
+
+App → Gateway → Dispatch Service: Order request
+
+Dispatch Service → User Service: Check payment method
+
+Dispatch Service → Database: Save order
+
+Dispatch Service → Cache: Find nearby drivers
+
+Dispatch Service → Kafka: Send "RideAssigned" event
+
+
 ## Deployment
-Embed the product's Deployment Diagram.svg.
-Provide a link to the PlantUML code for that deployment diagram.
-Briefly describe where the components are deployed.
+https://../../../docs/diagrams/out/yandex-go/deployment-diagram/Deployment%2520Diagram.svg
+
+Diagram code
+
+Deployment:
+
+Apps connect via Load Balancer
+
+Services run in Kubernetes
+
+Data stored in YDB and ClickHouse
+
+Redis for caching
+
+Kafka for messaging
+
+
 ## Assumptions
-List two or more assumptions you made while describing the architecture. Examples:
+Session validation uses JWT tokens
 
-Yandex Go: "I assume the pricing service handles surge pricing calculations based on demand and supply in real-time."
-Telegram: "I assume the cloud storage system implements deduplication to optimize storage costs for shared media files."
-Wildberries: "I assume the Logistics & Routing service integrates with multiple delivery partners to optimize shipping costs and delivery times"
+Driver matching considers proximity and ratings
+
+Redis stores driver locations for fast search
+
+Notifications are sent via Kafka events
+
+
 ## Open questions
-List two or more questions that you couldn't answer based on the openly available information. Examples:
+How does it handle Maps API failures?
 
-Yandex Go: "How does the actual load balancing mechanism work between the microservices in production?"
-Telegram: "How does the data flow look like in secret chats?"
-Wildberries: "What specific caching strategies are used to handle high traffic during sales events?"
+How are driver locations updated in real-time?
+
+How does A/B testing work?
