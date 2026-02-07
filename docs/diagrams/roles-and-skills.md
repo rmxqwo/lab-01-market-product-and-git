@@ -1,3 +1,57 @@
+### Role
+
+Backend Engineer
+
+### Skills I already have
+Basic Python/Java
+
+Git
+
+Basic SQL
+
+HTTP and CSS basics
+
+
+### Skills I clearly lack
+Advanced databases
+
+Message queues (Kafka)
+
+Cloud platforms (AWS/GCP)
+
+Docker/Kubernetes
+
+Monitoring tools
+
+Simple REST APIs
+
+### Skills that appear in several postings
+Python/Java/Go
+
+SQL databases
+
+Docker/Kubernetes
+
+Microservices
+
+REST/gRPC APIs
+
+### Skills specific to a single posting
+<!-- 2-5 skills -->
+- ...
+  
+### Personal reflection
+I chose Backend Engineer because they build the core systems. My skills are basic. Job market needs more advanced skills.
+
+This semester I want to learn:
+
+Docker - because every job asks for it
+
+Microservices - because systems like Yandex Go use them
+
+I will start with small projects using containers, then build simple services.
+
+
 ## Components and roles
 API Gateway
 
